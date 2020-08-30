@@ -26,7 +26,7 @@ public class Phone {
 	@Column(name = "phone_id")
 	private Integer phoneId;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="employee_id")
 	private Employee employee;
 	
@@ -82,8 +82,7 @@ public class Phone {
 
 	@Override
 	public String toString() {
-		return "Phone [phoneId=" + phoneId + ", phoneNumber=" + phoneNumber + ", phoneType=" + phoneType + ", call="
-				+ call + "]";
+		return "Phone [phoneId=" + phoneId + ", phoneNumber=" + phoneNumber + ", phoneType=" + phoneType+"]";
 	}
 	
 	

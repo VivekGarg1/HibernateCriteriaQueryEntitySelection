@@ -28,7 +28,12 @@ public class CriteriaQueryWithJoinClientTest {
 			CriteriaBuilder builder=session.getCriteriaBuilder();
 			CriteriaQuery<Phone> query= builder.createQuery(Phone.class);
 			Root<Phone> phoneRoot=query.from(Phone.class);
-			phoneRoot.join("employee");
+			//It is Lazily loaded 
+			//phoneRoot.join("employee");
+			
+			//Eagerly loaded
+			phoneRoot.fetch("employee");
+			phoneRoot.fetch("call");
 			
 			query.where(builder.isNotEmpty(phoneRoot.get("call")));
 			
